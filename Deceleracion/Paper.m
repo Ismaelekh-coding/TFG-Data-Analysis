@@ -38,6 +38,68 @@ for i = 1:length(Reynolds_Mean_vector)
 
 end
 
+%% Apartado 3.1.1 
+figure(1) % Reynolds vs Tiempo para alpha = 0p001 (Cuasi-Estacionario)
+plot(time_0p1, Reynolds_0p1,'-', 'LineWidth',1.5,'Color','#00AB84')
+x0 = xline(0,' ', 'Phase 1','FontAngle','italic','Color','#956C58');
+x1 = xline(10,'--', 'Phase 2','FontAngle','italic','Color','#956C58','LineWidth',2);
+legend(leyenda_acc(9), 'Interpreter','Latex','Location','northwest')
+xlabel('$t$' , 'Interpreter', 'latex','FontSize',14)
+ylabel('$Re$','Interpreter','latex','Rotation',0,'FontSize',14)
+x0.LabelVerticalAlignment = 'middle';
+x0.LabelHorizontalAlignment = 'right';
+x0.LabelOrientation = 'horizontal';
+x1.LabelVerticalAlignment = 'middle';
+x1.LabelHorizontalAlignment = 'right';
+x1.LabelOrientation = 'horizontal';
+xlim([0 30])
+print(gcf, './Graficas/reynoldsVStime.eps', '-depsc');
+
+
+
+figure(2) %Nusselt Vs Time
+plot(time_0p1, Nusselt_0p1, '-', 'LineWidth',1.5, 'Color','#00AB84')
+xlabel('$t$' , 'Interpreter', 'latex','FontSize',14)
+ylabel('$Nu$','Interpreter','latex','Rotation',0,'FontSize',14)
+x0 = xline(0,' ', 'Phase 1','FontAngle','italic','Color','#956C58');
+x1 = xline(7.5,'--', 'Phase 2','FontAngle','italic','Color','#956C58','LineWidth',2);
+x2 = xline(120,'--','Phase 3','FontAngle','italic','Color','#956C58','LineWidth',2);
+legend(leyenda_acc(9), 'Interpreter','Latex','Location','northwest');
+x0.LabelVerticalAlignment = 'middle';
+x0.LabelHorizontalAlignment = 'right';
+x1.LabelVerticalAlignment = 'bottom';
+x1.LabelHorizontalAlignment = 'right';
+x1.LabelOrientation = 'horizontal';
+x2.LabelVerticalAlignment = 'bottom';
+x2.LabelHorizontalAlignment = 'right';
+x2.LabelOrientation = 'horizontal';
+xlim([0 150])
+ylim([0 30])
+print(gcf, './Graficas/nusseltVStime.eps', '-depsc');
+
+
+figure(3) % Cf vs time
+plot(time_0p1, friction_0p1, '-', 'LineWidth',1.5, 'Color','#00AB84')
+xlabel('$t$' , 'Interpreter', 'latex','FontSize',14)
+ylabel('$C_f$','Interpreter','latex','Rotation',0,'FontSize',14)
+x0 = xline(0,' ', 'Phase 1','FontAngle','italic','Color','#956C58');
+x0_0 = xline(9.87,'--', 'Phase 2','FontAngle','italic','Color','#956C58','LineWidth',2);
+x1 = xline(14,'--', 'Phase 3','FontAngle','italic','Color','#956C58','LineWidth',2);
+x2 = xline(100,'--','Phase 4','FontAngle','italic','Color','#956C58','LineWidth',2);
+legend(leyenda_acc(9), 'Interpreter','Latex','Location','northeast');
+x0.LabelHorizontalAlignment = 'right';
+x0_0.LabelVerticalAlignment = 'middle';
+x0_0.LabelHorizontalAlignment = 'right';
+x1.LabelVerticalAlignment = 'bottom';
+x1.LabelHorizontalAlignment = 'right';
+x1.LabelOrientation = 'horizontal';
+x2.LabelVerticalAlignment = 'bottom';
+x2.LabelHorizontalAlignment = 'right';
+xlim([0 110])
+ylim([0 0.018])
+print(gcf, './Graficas/Cf.eps', '-depsc');
+
+
 %% Coeficiente de Nusselt
 figure(20) % Nusselt vs Reynolds para alpha = 0p001 (Cuasi-Estacionario)
 plot(Reynolds_0p001(1:PosReMean6400_0p001), Nusselt_0p001(1:PosReMean6400_0p001), '+','MarkerIndices',1:2000:length(Nusselt_0p001))
@@ -98,7 +160,7 @@ figure(24) % Reynolds vs Tiempo para alpha = 0p001 (Cuasi-Estacionario)
 plot(Reynolds_0p1(1:PosReMean6400_0p1), friction_0p1(1:PosReMean6400_0p1), 'pentagram','MarkerIndices',1:50:length(friction_0p5))
 hold on
 plot(Reynolds_0p001(1:PosReMean6400_0p001), friction_blasius_0p001(1:PosReMean6400_0p001), '--', 'LineWidth',1.5, 'Color','#7A9A01')
-lgd4 = legend('$\alpha$ = 0.5' ,'Blasius Friction', 'Interpreter','Latex', 'Location', 'southeast');
+lgd4 = legend('$\alpha$ = 0.1' ,'Blasius Friction', 'Interpreter','Latex', 'Location', 'southeast');
 lgd4.NumColumns = 1;
 xlabel('$Re$' , 'Interpreter', 'latex','FontSize',14)
 ylabel('$C_f$','Interpreter','latex','Rotation',0,'FontSize',14)
