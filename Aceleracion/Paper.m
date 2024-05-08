@@ -38,7 +38,71 @@ for i = 1:length(Reynolds_Mean_vector)
 
 end
 
-%% Jose Paper
+%% Apartado 3.1.1 
+figure(1) % Reynolds vs Tiempo para alpha = 0p001 (Cuasi-Estacionario)
+plot(time_0p005, Reynolds_0p005,'-', 'LineWidth',1.5,'Color','#00AB84')
+x0 = xline(0,' ', 'Phase 1','FontAngle','italic','Color','#956C58');
+x1 = xline(200,'--', 'Phase 2','FontAngle','italic','Color','#956C58','LineWidth',2);
+legend(leyenda_acc(4), 'Interpreter','Latex','Location','northwest')
+xlabel('$t$' , 'Interpreter', 'latex','FontSize',14)
+ylabel('$Re$','Interpreter','latex','Rotation',0,'FontSize',14)
+x0.LabelVerticalAlignment = 'middle';
+x0.LabelHorizontalAlignment = 'right';
+x0.LabelOrientation = 'horizontal';
+x1.LabelVerticalAlignment = 'middle';
+x1.LabelHorizontalAlignment = 'right';
+x1.LabelOrientation = 'horizontal';
+xlim([0 300])
+print(gcf, './Graficas/reynoldsVStime.eps', '-depsc');
+
+
+
+figure(2) %Nusselt Vs Time
+plot(time_0p005, Nusselt_0p005, '-', 'LineWidth',1.5, 'Color','#00AB84')
+xlabel('$t$' , 'Interpreter', 'latex','FontSize',14)
+ylabel('$Nu$','Interpreter','latex','Rotation',0,'FontSize',14)
+x0 = xline(0,' ', 'Phase 1','FontAngle','italic','Color','#956C58');
+x1 = xline(57,'--', 'Phase 2','FontAngle','italic','Color','#956C58','LineWidth',2);
+x2 = xline(225,'--','Phase 3','FontAngle','italic','Color','#956C58','LineWidth',2);
+legend(leyenda_acc(4), 'Interpreter','Latex','Location','northwest');
+x0.LabelVerticalAlignment = 'bottom';
+x0.LabelHorizontalAlignment = 'right';
+x0.LabelOrientation = 'horizontal';
+x1.LabelVerticalAlignment = 'bottom';
+x1.LabelHorizontalAlignment = 'right';
+x1.LabelOrientation = 'horizontal';
+x2.LabelVerticalAlignment = 'bottom';
+x2.LabelHorizontalAlignment = 'right';
+x2.LabelOrientation = 'horizontal';
+xlim([0 300])
+ylim([0 30])
+print(gcf, './Graficas/nusseltVStime.eps', '-depsc');
+
+
+figure(3) % Cf vs time
+plot(time_0p005, friction_0p005, '-', 'LineWidth',1.5, 'Color','#00AB84')
+xlabel('$t$' , 'Interpreter', 'latex','FontSize',14)
+ylabel('$C_f$','Interpreter','latex','Rotation',0,'FontSize',14)
+x0 = xline(0,' ', 'Phase 1','FontAngle','italic','Color','#956C58');
+x0_0 = xline(5,'--', 'Phase 2','FontAngle','italic','Color','#956C58','LineWidth',2);
+x1 = xline(57,'--', 'Phase 3','FontAngle','italic','Color','#956C58','LineWidth',2);
+x2 = xline(100,'--','Phase 4','FontAngle','italic','Color','#956C58','LineWidth',2);
+legend(leyenda_acc(4), 'Interpreter','Latex','Location','northeast');
+x0.LabelHorizontalAlignment = 'right';
+x0_0.LabelVerticalAlignment = 'bottom';
+x0_0.LabelHorizontalAlignment = 'right';
+x0_0.LabelOrientation = 'horizontal';
+x1.LabelVerticalAlignment = 'bottom';
+x1.LabelHorizontalAlignment = 'right';
+x1.LabelOrientation = 'horizontal';
+x2.LabelVerticalAlignment = 'bottom';
+x2.LabelHorizontalAlignment = 'right';
+x2.LabelOrientation = 'horizontal';
+xlim([0 150])
+ylim([0 0.015])
+print(gcf, './Graficas/Cf.eps', '-depsc');
+
+%% Nusselt
 figure(20) % Nusselt vs Reynolds para alpha = 0p001 (Cuasi-Estacionario)
 plot(Reynolds_0p001(1:PosReMean6400_0p001), Nusselt_0p001(1:PosReMean6400_0p001), '+','MarkerIndices',1:2000:length(Nusselt_0p001))
 hold on
